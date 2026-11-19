@@ -43,7 +43,13 @@
   --color-highlight: var(--highlight);
   --color-surface: var(--surface);
   --color-hairline: var(--hairline);
-  --color-track: var(--track);
+  --color-brand-soft: var(--brand-soft);
+  --color-highlight-strong: var(--highlight-strong);
+  --color-map-neutral: var(--map-neutral);
+  --color-map-neutral-strong: var(--map-neutral-strong);
+  --color-surface-strong: var(--surface-strong);
+  --shadow-card: var(--elev-card);
+  --shadow-card-hover: var(--elev-card-hover);
 
   --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
@@ -61,7 +67,13 @@
   --highlight: oklch(0.75 0.176 56.2); /* #FF8B1B — accent, use sparingly */
   --surface: oklch(0.975 0.005 258.3); /* #F5F7FA */
   --hairline: oklch(0.287 0.076 253.6 / 12%);
-  --track: oklch(0.287 0.076 253.6 / 10%);
+  --brand-soft: oklch(0.431 0.131 252.6 / 8%);
+  --highlight-strong: oklch(0.68 0.18 52);
+  --map-neutral: oklch(0.9 0.012 255);
+  --map-neutral-strong: oklch(0.84 0.02 255);
+  --surface-strong: oklch(0.955 0.008 258);
+  --elev-card: 0 1px 2px oklch(0.287 0.076 253.6 / 4%), 0 8px 24px -12px oklch(0.287 0.076 253.6 / 10%);
+  --elev-card-hover: 0 2px 4px oklch(0.287 0.076 253.6 / 5%), 0 16px 32px -16px oklch(0.287 0.076 253.6 / 18%);
 
   --background: var(--surface);
   --foreground: var(--navy);
@@ -115,7 +127,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 0.9;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums lining-nums;
 }
 
@@ -158,69 +170,10 @@
   }
 }
 
-/* Bars / strokes that draw in once visible */
-@utility draw-bar {
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 1200ms var(--ease-out-soft);
-  transition-delay: var(--reveal-delay, 0ms);
-
-  [data-inview="true"] & {
-    transform: scaleX(1);
-  }
-}
-
-@utility draw-stroke {
-  stroke-dashoffset: var(--dash-length);
-  transition: stroke-dashoffset 1400ms var(--ease-out-soft);
-  transition-delay: var(--reveal-delay, 0ms);
-
-  [data-inview="true"] & {
-    stroke-dashoffset: var(--dash-target, 0);
-  }
-}
-
-@utility pop-dot {
-  opacity: 0;
-  transform: scale(0.4);
-  transition:
-    opacity 400ms var(--ease-out-soft),
-    transform 400ms var(--ease-out-soft);
-  transition-delay: var(--reveal-delay, 0ms);
-
-  [data-inview="true"] & {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes stream {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(var(--stream-distance, 100%));
-  }
-}
-
-@utility stream-dot {
-  animation: stream var(--stream-duration, 6s) linear infinite;
-  animation-delay: var(--stream-delay, 0s);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .draw-bar,
-  .pop-dot {
+  .reveal {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-  }
-  .draw-stroke {
-    stroke-dashoffset: var(--dash-target, 0) !important;
-    transition: none !important;
-  }
-  .stream-dot {
-    animation: none !important;
   }
 }
