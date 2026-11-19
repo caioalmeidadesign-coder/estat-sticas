@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- ERPO stats section lives in `src/components/erpo-stats/`; every indicator's copy and value comes from `stats-data.ts` only, so figures stay editable in one place and are guarded by `src/test/erpo-stats.test.ts`.
+- Charts in the stats section are unit charts whose mark counts derive from the published figures; never add data series, maps or metrics not in `stats-data.ts`, because the brief forbids invented data.
+- Each indicator is one `StatModule` (tag → figure → label → visual) laid out on a CSS grid board, so the section can be rebuilt with native Elementor containers.

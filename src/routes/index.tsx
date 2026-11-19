@@ -1,23 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { StatsSection } from "@/components/erpo-stats/StatsSection";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Estatísticas ERPO — Números que comprovam resultados" },
+      {
+        name: "description",
+        content:
+          "161 empresas, 40.000 placas, +30% de redução de custos e +500 mil eventos por dia: os números da ERPO em gestão de frotas.",
+      },
+      { property: "og:title", content: "Estatísticas ERPO — Números que comprovam resultados" },
+      {
+        property: "og:description",
+        content: "A ERPO conecta tecnologia, inteligência e eficiência para transformar a gestão de frotas.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="min-h-screen bg-background">
+      <StatsSection />
+    </main>
   );
 }
