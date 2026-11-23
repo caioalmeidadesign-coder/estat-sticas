@@ -1,16 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CtaFinalSection } from "@/components/erpo-cta/CtaFinalSection";
 import { StatsSection } from "@/components/erpo-stats/StatsSection";
+import { WhyNowSection } from "@/components/erpo-why-now/WhyNowSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Estatísticas ERPO — Números que comprovam resultados" },
+      { title: "ERPO — Gestão de frotas com tecnologia e inteligência" },
       {
         name: "description",
         content:
-          "161 empresas, 40.000 placas, +30% de redução de custos e +500 mil eventos por dia: os números da ERPO em gestão de frotas.",
+          "Entenda por que a gestão de frotas precisa evoluir, veja os números da ERPO e converse com um especialista.",
       },
-      { property: "og:title", content: "Estatísticas ERPO — Números que comprovam resultados" },
+      { property: "og:title", content: "ERPO — Gestão de frotas com tecnologia e inteligência" },
       {
         property: "og:description",
         content: "A ERPO conecta tecnologia, inteligência e eficiência para transformar a gestão de frotas.",
@@ -25,7 +27,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="min-h-screen bg-background">
+      <WhyNowSection />
       <StatsSection />
+      <CtaFinalSection />
     </main>
   );
 }

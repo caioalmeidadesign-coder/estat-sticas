@@ -177,3 +177,97 @@
     transition: none !important;
   }
 }
+
+/* =====================================================================
+ * Shared tokens for the "Por que agora?" and "CTA final" sections.
+ * Added below the stats styles; nothing above is changed.
+ * ===================================================================== */
+
+@theme inline {
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-line-strong: var(--navy-line-strong);
+  --color-brand-light: var(--brand-light);
+  --color-brand-pale: var(--brand-pale);
+  --color-highlight-soft: var(--highlight-soft);
+  --shadow-float: var(--elev-float);
+  --shadow-toast: var(--elev-toast);
+}
+
+:root {
+  --navy-deep: oklch(0.235 0.068 254); /* darker navy for app chrome */
+  --navy-line-strong: oklch(1 0 0 / 28%);
+  --brand-light: oklch(0.76 0.09 246); /* institutional blue, light step (on navy / charts) */
+  --brand-pale: oklch(0.95 0.025 250);
+  --highlight-soft: oklch(0.75 0.176 56.2 / 14%);
+  --elev-float: 0 40px 80px -40px oklch(0.12 0.05 254 / 70%), 0 2px 8px oklch(0.12 0.05 254 / 20%);
+  --elev-toast: 0 20px 40px -20px oklch(0.12 0.05 254 / 55%), 0 1px 3px oklch(0.12 0.05 254 / 18%);
+}
+
+/* Slide in from the right (product panel) */
+@utility reveal-x {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 900ms var(--ease-out-soft),
+    transform 900ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+
+  [data-inview="true"] & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* SVG line that draws itself once visible (needs pathLength="1") */
+@utility draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1600ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+
+  [data-inview="true"] & {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Horizontal bar growing from the left */
+@utility grow-x {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1100ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+
+  [data-inview="true"] & {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.75 0.176 56.2 / 45%);
+  }
+  50% {
+    box-shadow: 0 0 0 6px oklch(0.75 0.176 56.2 / 0%);
+  }
+}
+
+@utility pulse-dot {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-x,
+  .grow-x {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .draw-line {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .pulse-dot {
+    animation: none !important;
+  }
+}
