@@ -16,7 +16,7 @@ function AlertToast() {
   return (
     <div
       aria-hidden="true"
-      className="reveal absolute -left-14 top-[30%] z-20 hidden w-[264px] items-center gap-3 rounded-xl bg-card p-3.5 shadow-toast xl:flex"
+      className="reveal absolute -top-7 left-[34%] z-20 hidden w-[264px] items-center gap-3 rounded-xl bg-card p-3.5 shadow-toast xl:flex"
       style={{ ["--reveal-delay" as string]: "1100ms" }}
     >
       <span className="relative flex size-9 shrink-0 items-center justify-center rounded-lg bg-highlight text-navy">

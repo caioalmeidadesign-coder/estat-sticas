@@ -54,7 +54,7 @@ export function CtaFinalSection() {
           </p>
 
           <div
-            className="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+            className="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap xl:w-fit xl:flex-col"
             style={{ ["--reveal-delay" as string]: "260ms" }}
           >
             <ErpoButton href={CTA_CONTENT.primary.href} variant="accent" icon={<CalendarDays className="size-5" strokeWidth={1.75} />}>

@@ -24,7 +24,7 @@ function FactorTitle({ factor }: { factor: Factor }) {
   return <>{title}</>;
 }
 
-function FactorIcon({ icon: Icon, featured, className }: { icon: LucideIcon; featured?: boolean; className?: string }) {
+function FactorIcon({ icon: Icon, featured, className }: { icon: LucideIcon; featured?: boolean | undefined; className?: string | undefined }) {
   return (
     <span
       aria-hidden="true"

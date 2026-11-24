@@ -33,3 +33,6 @@ use the editor.
 - ERPO stats section lives in `src/components/erpo-stats/`; every indicator's copy and value comes from `stats-data.ts` only, so figures stay editable in one place and are guarded by `src/test/erpo-stats.test.ts`.
 - Charts in the stats section are unit charts whose mark counts derive from the published figures; never add data series, maps or metrics not in `stats-data.ts`, because the brief forbids invented data.
 - Each indicator is one `StatModule` (tag → figure → label → visual) laid out on a CSS grid board, so the section can be rebuilt with native Elementor containers.
+- Each homepage section is an independent folder under `src/components/` (`erpo-why-now`, `erpo-stats`, `erpo-cta`) with its copy in a local `*-data.ts`; new sections must not edit another section's files, so an approved section stays untouched.
+- Cross-section UI pieces live in `src/components/erpo-shared/`, and new design tokens go in an appended block at the end of `src/styles.css`, so existing section styles never change.
+- The CTA product dashboard uses fictional data from `dashboard-data.ts` only; it must never be presented as ERPO statistics.
